@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        h1 {
+            transition: opacity 1s ease-in-out, background-color 1s ease-in-out;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome HTML5, CSS3, Javascript</h1>
+    <h1 id="dynamic-content">Welcome HTML5, CSS3, Javascript</h1>
+
+    <script>
+        const messages = [
+            "Welcome HTML5, CSS3, Javascript",
+            "Learn to code with ease",
+            "Build amazing web applications",
+            "Stay updated with the latest trends"
+        ];
+
+        const colors = [
+            "#FF5733", // Red
+            "#33FF57", // Green
+            "#3357FF", // Blue
+            "#FF33A1"  // Pink
+        ];
+
+        let index = 0;
+        const h1Element = document.getElementById('dynamic-content');
+
+        setInterval(() => {
+            h1Element.style.opacity = 0;
+            setTimeout(() => {
+                index = (index + 1) % messages.length;
+                h1Element.textContent = messages[index];
+                h1Element.style.backgroundColor = colors[index];
+                h1Element.style.opacity = 1;
+            }, 1000);
+        }, 3000);
+    </script>
 </body>
 </html>
